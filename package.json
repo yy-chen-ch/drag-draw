@@ -13,6 +13,8 @@
     "@antv/x6-plugin-transform": "^2.1.8",
     "@vue-flow/core": "^1.26.0",
     "element-plus": "^2.4.3",
+    "unplugin-vue-components": "^0.26.0",
+    "vite-plugin-compression": "^0.5.1",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },

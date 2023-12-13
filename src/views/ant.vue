@@ -127,8 +127,7 @@ const changeMark = (index) => {
 
 
 
-
-const bgUrl = "https://img1.baidu.com/it/u=3662205435,3825370309&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1702486800&t=fc667877ac946bba73bf4b679dedf250"
+import bgUrl from '@assets/img/bg.webp'
 let graph = null
 
 const initGraph = () => {
@@ -160,8 +159,8 @@ const addMark = (text) => {
     shape: 'circle',
     x: 180,
     y: 60,
-    width: 10,
-    height: 10,
+    width: 8,
+    height: 8,
     attrs: {
       body: {
         stroke: 'red',
@@ -184,15 +183,16 @@ const addMark = (text) => {
   const target = graph.addNode({
     x: 110,
     y: 110,
-    width: 200,
-    height: 80,
+    width: 160,
+    height: 60,
     shape: 'text-block',
     text: text,
     attrs: {
       body: {
         stroke: '#5F95FF',
         fill: '#EFF4FF',
-        strokeWidth: 1
+        strokeWidth: 1,
+        fontSize: 12
       },
     },
     // tools: [
