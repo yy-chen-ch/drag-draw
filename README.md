@@ -1,7 +1,8 @@
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+#### 功能
+1. 表格 新增，编辑和多列删除
+2. 标注功能：
+   2.1 将描述标注到图中
+   2.2 支持拖拽
+   2.3 支持缩放
+   2.4 支持同步描述修改
+3. 保存和载入：保存标注和载入标注

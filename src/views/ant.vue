@@ -2,6 +2,7 @@
 
 import { Graph } from "@antv/x6"
 import { Transform } from '@antv/x6-plugin-transform'
+import { Export } from '@antv/x6-plugin-export'
 import { onMounted, reactive, ref } from "vue"
 import { ElTable, ElMessage } from 'element-plus'
 
@@ -136,22 +137,53 @@ const initGraph = () => {
     container, 
     width: 400, 
     height: 400, 
-    mousewheel: {
-        enabled: true,
-        minScale: 0.2,
-        maxScale: 4,
-      }, 
+    // mousewheel: {
+    //     enabled: true,
+    //     minScale: 0.2,
+    //     maxScale: 4,
+    //   }, 
     })
   graph.drawBackground({
     image: bgUrl,
     size: { width: '100%', height: '100%' }
   })
+  graph.use(new Export())
   
   graph.use(
       new Transform({
         resizing: true,
       }),
     )
+
+  graph.on('node:mouseenter', ({ node }) => {
+    if (node.shape === 'text-block' && !node.hasTool("button-remove")) {
+    node.addTools({
+      name: 'button-remove',
+      args: {
+        x: '100%',
+        y: 0,
+        onClick({ view }) { 
+          const edge = graph.getConnectedEdges(view.cell.id)[0]
+          // console.log(edge, edge.id)
+          delMark(edge.id)
+          data.value = data.value.map(v => {
+            if(v.markID === edge.id){
+              v.markID = ""
+              v.mark = '否'
+            }
+            return v
+          })
+        }
+      }
+    });
+  }
+  })
+
+  graph.on('node:mouseleave', ({ node }) => {
+    if (node.hasTool("button-remove")) {
+    node.removeTool("button-remove");
+  }
+  })  
 }
 const addMark = (text) => {
  
@@ -192,9 +224,9 @@ const addMark = (text) => {
         stroke: '#5F95FF',
         fill: '#EFF4FF',
         strokeWidth: 1,
-        fontSize: 12
-      },
+      }
     },
+    // tools: 'button-remove',
     // tools: [
     //   {
     //     name: 'node-editor',
@@ -225,7 +257,7 @@ const addMark = (text) => {
   
   })
   
-  console.log('add', edge.id, source.id, target)
+  console.log('add', edge.id, source.id, target.id)
   return edge.id
 }
 const delMark = (markID) => {
@@ -259,12 +291,13 @@ const loadData = () => {
   data.value = JSON.parse(tableData)
 }
 
+// const toPng = () => {
+//   graph.toPng('a.png')
+// }
+
 onMounted(() => {
   initGraph()
 })
-
-
-
 
 
 </script>
@@ -321,6 +354,7 @@ onMounted(() => {
         <div class="flex mb-8">
           <el-button type="primary" @click="up" size="small">点击上传</el-button>
             <el-button type="danger" @click="del" size="small">删除图片</el-button>
+            <!-- <el-button @click="toPng" size="small">保存图片</el-button> -->
             <el-button @click="save" size="small">保存</el-button>
             <el-button @click="loadData" size="small">载入数据</el-button>
         </div>
@@ -330,7 +364,11 @@ onMounted(() => {
 
 </template>
 
-<style scoped>
+<style>
+foreignObject div{
+  font-size: 10px!important;
+  line-height: 14px;
 
+}
 
 </style>

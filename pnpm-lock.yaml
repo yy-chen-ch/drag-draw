@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antv/x6': ^2.16.1
+  '@antv/x6-plugin-export': ^2.1.6
   '@antv/x6-plugin-transform': ^2.1.8
   '@vitejs/plugin-vue': ^4.2.3
   '@vue-flow/core': ^1.26.0
@@ -15,6 +16,7 @@ specifiers:
 
 dependencies:
   '@antv/x6': 2.16.1
+  '@antv/x6-plugin-export': 2.1.6_@antv+x6@2.16.1
   '@antv/x6-plugin-transform': 2.1.8_@antv+x6@2.16.1
   '@vue-flow/core': 1.26.0_vue@3.3.8
   element-plus: 2.4.3_vue@3.3.8
@@ -43,6 +45,14 @@ packages:
 
   /@antv/x6-geometry/2.0.5:
     resolution: {integrity: sha512-MId6riEQkxphBpVeTcL4ZNXL4lScyvDEPLyIafvWMcWNTGK0jgkK7N20XSzqt8ltJb0mGUso5s56mrk8ysHu2A==}
+    dev: false
+
+  /@antv/x6-plugin-export/2.1.6_@antv+x6@2.16.1:
+    resolution: {integrity: sha512-m0ukMmZhrFE5n7uCR43DVQBdiUfpjGN+vm1mc+6RTZdHK8pa6Mxr0RZztaxPy34YA4tli+bGY3ePslsNPfh6PQ==}
+    peerDependencies:
+      '@antv/x6': ^2.x
+    dependencies:
+      '@antv/x6': 2.16.1
     dev: false
 
   /@antv/x6-plugin-transform/2.1.8_@antv+x6@2.16.1:

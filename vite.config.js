@@ -26,13 +26,12 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@scss': path.resolve(__dirname, 'src/assets/scss'),
-      '@svg': path.resolve(__dirname, 'src/assets/svg'),
-      '@common': path.resolve(__dirname, 'src/common'),
       '@cmp': path.resolve(__dirname, 'src/components'),
       '@views': path.resolve(__dirname, 'src/views'),
     }
   },
   build: {
+    minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
