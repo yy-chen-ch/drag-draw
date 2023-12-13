@@ -1,0 +1,42 @@
+
+$unit: 8;
+$base_spacing: $unit, $unit * 2, $unit * 3, $unit * 4, 4, 5, 6, 9, 10, 20, 12, 14, 16, 18, 26, 28, 30, 32, 40;
+$directions: (
+  'top': 't',
+  'right': 'r',
+  'bottom': 'b',
+  'left': 'l'
+);
+
+/* margin (0px - 32px)*/
+@each $spacing in $base_spacing {
+  @each $full, $short in $directions {
+    .m#{$short}-#{$spacing} {
+      margin-#{$full}: #{$spacing}px;
+    }
+  }
+  // .pb-0 {padding-bottom: 0px;}
+}
+
+/* padding (0px - 32px)*/
+@each $spacing in $base_spacing {
+  @each $full, $short in $directions {
+    .p#{$short}-#{$spacing} {
+      padding-#{$full}: #{$spacing}px;
+    }
+  }
+  .pd-#{$spacing} {
+    padding: #{$spacing}px;
+  }
+  // .p0 {padding:0}
+}
+
+.mr{
+  margin-left: auto;
+}
+.ml{
+  margin-right: auto;
+}
+.m-16{
+  margin: 16px;
+}

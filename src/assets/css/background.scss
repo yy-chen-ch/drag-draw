@@ -1,0 +1,18 @@
+// background-color
+$colors: (
+  ff2: #FF2741,
+  00: #000000,
+  fa: #FAFAFA,
+  ff: #ffffff,
+  40: #40AA54,
+  c4: #C4C4C4,
+  f5: #F5F5F5,
+  f4: #F4A50B,
+  ffc: #FFCD6E,
+  16: #16162E,
+);
+@each $key, $val in $colors{
+  .bg-#{$key}{
+      background-color: $val;
+  }
+}

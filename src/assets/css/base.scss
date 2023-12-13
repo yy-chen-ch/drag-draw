@@ -1,0 +1,45 @@
+.hoverp{
+    .hovers{
+        opacity: 0;;
+    }
+    &:hover .hovers{
+        opacity: 1;
+    }
+    
+}
+
+.input{
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+
+
+.w-full, .w-100{
+    width: 100%;
+}
+.t-center{
+    text-align: center;
+}
+.t-nowrap{
+    white-space: nowrap;
+}
+// 定位
+.ps-rt{
+    position: relative;
+}
+.ps-al{
+    position: absolute;
+}
+.ps-fx{
+    position: fixed;
+}
+
+.overflow-auto{
+    overflow: auto;
+}
+.fr{
+    float: right;
+}
+

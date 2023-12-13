@@ -1,0 +1,35 @@
+$fs: 7, 8, 10, 12, 14, 16, 18, 20, 24, 32;/* font-size */
+@each $size in $fs {
+  .fs-#{$size} {
+    font-size: #{$size}px;
+    @if $size < 12 {
+      // transform: scale(calc(#{$size}/12));
+      // transform-origin:0 0 ;  
+      zoom: calc(#{$size}/12);
+    }
+  }
+}
+
+
+$colors: (
+  0f: #0F172D,
+  00: #000000,
+  ff: #ffffff,
+  f4: #F4A50B,
+  88: #888C97,
+  84: #848C94,
+  ff2: #FF2741,
+  16: #16162E,
+  28: #282F3E,
+  da: #DADADA,
+);
+@each $key, $val in $colors{
+  .cl-#{$key}{
+      color: $val;
+  }
+}
+
+.fw-bold{
+  font-weight: bold;
+}
+

@@ -1,0 +1,30 @@
+// border-radius
+$space: 3, 4, 5, 6, 8, 10, 12, 14, 15, 16, 17, 18, 20, 22, 32;
+@each $size in $space {
+  .br-#{$size} {
+    border-radius: #{$size}px;
+  }
+}
+
+// border
+$colors: (
+  e7: #E7E7E7,
+  ee: #EEEEEE,
+  ea: #EAEAEA,
+  cc: #cccccc,
+  ff2: #FF2741,
+);
+@each $key, $val in $colors{
+  .b-c-#{$key}{
+    border: 1px solid $val;
+  }
+}
+
+// border-radius
+.br-half{
+    border-radius: 50%;
+}
+
+
+
+
