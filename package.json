@@ -12,7 +12,6 @@
     "@antv/x6": "^2.16.1",
     "@antv/x6-plugin-export": "^2.1.6",
     "@antv/x6-plugin-transform": "^2.1.8",
-    "@vue-flow/core": "^1.26.0",
     "element-plus": "^2.4.3",
     "unplugin-vue-components": "^0.26.0",
     "vite-plugin-compression": "^0.5.1",

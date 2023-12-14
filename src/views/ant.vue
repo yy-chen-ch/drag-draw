@@ -301,9 +301,14 @@ const loadData = () => {
   data.value = JSON.parse(tableData)
 }
 
+const savePng = ref("")
 const toPng = () => {
   graph.toPNG((dataUrl) => {
     console.log(dataUrl)
+    savePng.value = dataUrl
+  },
+  {
+    quality: 1
   })
 }
 
@@ -340,6 +345,8 @@ onMounted(() => {
           </el-table-column>
 
         </el-table>
+
+        <img :src="savePng" alt="" v-show="savePng">
 
         <el-dialog v-model="addSelFlag" title="添加标注" :before-close="cancelAddSel">
           <el-form :model="addForm">  
