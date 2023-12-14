@@ -138,18 +138,13 @@ const initGraph = () => {
     width: 400, 
     height: 400, 
     grid: true,
-    // background: {
-    //   image: bgUrl,
-    //   repeat: false,
-    //   size: '400 400',
-    // },
+    interacting: {
+        nodeMovable: (view) => {
+          return view.cell.prop("movable");
+        }
+      },
+
   })
-
-  // graph.drawBackground({
-  //   image: bgUrl,
-    
-  // })
-
 
   graph.addNode({
     shape: 'image',
@@ -157,7 +152,8 @@ const initGraph = () => {
     y: 0,
     width: 400,
     height: 400,
-    imageUrl: bgUrl
+    imageUrl: bgUrl,
+    movable: false,
   })
 
   graph.use(new Export())
@@ -167,8 +163,6 @@ const initGraph = () => {
         resizing: true,
       }),
     )
-
-  // graph.on('node:move', ({ e, x, y, node, view }) => { console.log(e) })
 
   graph.on('node:mouseenter', ({ node }) => {
     if (node.shape === 'text-block' && !node.hasTool("button-remove")) {
@@ -241,17 +235,6 @@ const addMark = (text) => {
         strokeWidth: 1,
       }
     },
-    // tools: 'button-remove',
-    // tools: [
-    //   {
-    //     name: 'node-editor',
-    //     args: {
-    //       attrs: {
-    //         backgroundColor: '#EFF4FF',
-    //       },
-    //     },
-    //   },
-    // ],
   })
 
   const edge = graph.addEdge({
@@ -307,11 +290,12 @@ const loadData = () => {
 }
 
 const savePng = ref("")
-// const svgPng = ref('')
 const toPng = () => {
   graph.toSVG((dataUrl) => {
     console.log(dataUrl)
     savePng.value = dataUrl
+  },{
+    serializeImages: true,
   })
 }
 
