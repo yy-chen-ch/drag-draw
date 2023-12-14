@@ -137,16 +137,19 @@ const initGraph = () => {
     container, 
     width: 400, 
     height: 400, 
-    // mousewheel: {
-    //     enabled: true,
-    //     minScale: 0.2,
-    //     maxScale: 4,
-    //   }, 
-    })
+    grid: true,
+    // background: {
+    //   image: bgUrl,
+    //   repeat: false,
+    //   size: '400 400',
+    // },
+  })
+
   // graph.drawBackground({
   //   image: bgUrl,
-  //   size: { width: '100%', height: '100%' }
+    
   // })
+
 
   graph.addNode({
     shape: 'image',
@@ -154,7 +157,7 @@ const initGraph = () => {
     y: 0,
     width: 400,
     height: 400,
-    imageUrl: bgUrl,
+    imageUrl: bgUrl
   })
 
   graph.use(new Export())
@@ -164,6 +167,8 @@ const initGraph = () => {
         resizing: true,
       }),
     )
+
+  // graph.on('node:move', ({ e, x, y, node, view }) => { console.log(e) })
 
   graph.on('node:mouseenter', ({ node }) => {
     if (node.shape === 'text-block' && !node.hasTool("button-remove")) {
@@ -302,13 +307,11 @@ const loadData = () => {
 }
 
 const savePng = ref("")
+// const svgPng = ref('')
 const toPng = () => {
-  graph.toPNG((dataUrl) => {
+  graph.toSVG((dataUrl) => {
     console.log(dataUrl)
     savePng.value = dataUrl
-  },
-  {
-    quality: 1
   })
 }
 
@@ -346,7 +349,8 @@ onMounted(() => {
 
         </el-table>
 
-        <img :src="savePng" alt="" v-show="savePng">
+        <!-- <img :src="savePng" alt="" v-show="savePng"> -->
+        <div v-html="savePng" class="png"></div>
 
         <el-dialog v-model="addSelFlag" title="添加标注" :before-close="cancelAddSel">
           <el-form :model="addForm">  
@@ -388,6 +392,11 @@ foreignObject div{
   font-size: 10px!important;
   line-height: 14px;
 
+}
+.png{
+  height: 400px;
+  width: 400px;
+  position: relative;
 }
 
 </style>

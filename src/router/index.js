@@ -1,6 +1,6 @@
 import { createRouter,createWebHashHistory } from "vue-router";
 import ant from '../views/ant.vue'
-import flow from '../views/flow.vue'
+
 
 
 const routes = [
@@ -8,10 +8,6 @@ const routes = [
       path:'/ant',
       name:ant,
       component:ant
-    },
-    {
-      path:'/flow',
-      component:flow
     },
     
     {
