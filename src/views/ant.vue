@@ -143,10 +143,20 @@ const initGraph = () => {
     //     maxScale: 4,
     //   }, 
     })
-  graph.drawBackground({
-    image: bgUrl,
-    size: { width: '100%', height: '100%' }
+  // graph.drawBackground({
+  //   image: bgUrl,
+  //   size: { width: '100%', height: '100%' }
+  // })
+
+  graph.addNode({
+    shape: 'image',
+    x: 0,
+    y: 0,
+    width: 400,
+    height: 400,
+    imageUrl: bgUrl,
   })
+
   graph.use(new Export())
   
   graph.use(
@@ -291,9 +301,11 @@ const loadData = () => {
   data.value = JSON.parse(tableData)
 }
 
-// const toPng = () => {
-//   graph.toPng('a.png')
-// }
+const toPng = () => {
+  graph.toPNG((dataUrl) => {
+    console.log(dataUrl)
+  })
+}
 
 onMounted(() => {
   initGraph()
@@ -354,7 +366,7 @@ onMounted(() => {
         <div class="flex mb-8">
           <el-button type="primary" @click="up" size="small">点击上传</el-button>
             <el-button type="danger" @click="del" size="small">删除图片</el-button>
-            <!-- <el-button @click="toPng" size="small">保存图片</el-button> -->
+            <el-button @click="toPng" size="small">保存图片</el-button>
             <el-button @click="save" size="small">保存</el-button>
             <el-button @click="loadData" size="small">载入数据</el-button>
         </div>
